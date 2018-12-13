@@ -1,3 +1,3 @@
 # trellis-docker
 
-A test of the trellis docker container
+This repository conducts sanity tests of the Trellis docker container.
