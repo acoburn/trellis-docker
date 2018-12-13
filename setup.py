@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys 
+import sys
 
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
@@ -40,6 +40,4 @@ setup(name='pytrellis-test',
       tests_require=['pytest'],
       cmdclass={'test': PyTest},
       install_requires=[
-          'requests',
-          'rdflib',
-          'rdflib-jsonld'])
+          'requests'])
