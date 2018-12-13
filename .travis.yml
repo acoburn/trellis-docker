@@ -11,4 +11,5 @@ before_install:
     - docker ps -a
 
 script:
+    - sleep 20
     - python check.py
