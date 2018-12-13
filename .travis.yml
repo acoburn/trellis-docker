@@ -12,4 +12,4 @@ before_install:
 
 script:
     - sleep 20
-    - python check.py
+    - python setup.py test
