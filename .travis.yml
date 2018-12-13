@@ -10,6 +10,6 @@ before_install:
     - docker ps -a
 
 script:
-    - sleep 60
+    - python verify_running.py
     - python setup.py test -a "--baseurl=http://localhost:8080/"
     - python setup.py test -a "--baseurl=http://localhost/"
