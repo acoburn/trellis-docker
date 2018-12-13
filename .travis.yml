@@ -5,10 +5,11 @@ services:
     - docker
 
 before_install:
-    - docker pull trellisldp/trellis
-    - docker run -d -p 127.0.0.1:8080:8080/tcp trellisldp/trellis
+    - docker-compose --version
+    - docker-compose up -d
     - docker ps -a
 
 script:
-    - sleep 20
-    - python setup.py test
+    - sleep 60
+    - python setup.py test -a "--baseurl=http://localhost:8080/"
+    - python setup.py test -a "--baseurl=http://localhost/"
