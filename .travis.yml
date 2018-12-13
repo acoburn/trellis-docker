@@ -1,0 +1,14 @@
+language: python
+python:
+    - 3.4
+
+services:
+    - docker
+
+before_install:
+    - docker pull trellisldp/trellis
+    - docker run -d -p 127.0.0.1:80:8080/tcp trellisldp/trellis
+    - docker ps -a
+
+script:
+    - python check.py
