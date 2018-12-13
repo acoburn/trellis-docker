@@ -36,7 +36,7 @@ setup(name='pytrellis-test',
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",
         "Topic :: Internet :: WWW/HTTP"],
-      url='https://github.com/trellis-ldp/trellis-dockertest',
+      url='https://github.com/trellis-ldp/trellis-docker-tests',
       tests_require=['pytest'],
       cmdclass={'test': PyTest},
       install_requires=[
