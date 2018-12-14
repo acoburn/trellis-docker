@@ -1,3 +1,4 @@
 pytest
+awscli
 requests
 backoff

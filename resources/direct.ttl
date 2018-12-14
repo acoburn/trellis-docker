@@ -1,0 +1,7 @@
+PREFIX ldp: <http://www.w3.org/ns/ldp#>
+PREFIX dc: <http://purl.org/dc/terms/>
+
+<> a ldp:DirectContainer ;
+   dc:title "Direct Container" ;
+   ldp:membershipResource </member_dc> ;
+   ldp:hasMemberRelation ldp:member .

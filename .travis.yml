@@ -7,17 +7,17 @@ services:
 jobs:
     include:
         - name: "Trellis - Triplestore"
-          before_install:
-              - docker-compose --version
-              - docker-compose -f trellis-compose.yml up -d
+          before_install: docker-compose -f trellis-compose.yml up -d
+          script:
+              - python verify_running.py --baseurl http://localhost/
+              - python setup.py test -a "--baseurl=http://localhost/"
 
         - name: "Trellis - PostgreSQL"
-          before_install:
-              - docker-compose --version
-              - docker-compose -f trellis-ext-db-compose.yml up -d
-
-script:
-  - docker ps -a
-  - python verify_running.py --baseurl http://localhost/
-  - python setup.py test -a "--baseurl=http://localhost/"
+          before_install: docker-compose -f trellis-ext-db-compose.yml up -d
+          script:
+              - python verify_running.py --baseurl http://localhost/
+              - python setup.py test -a "--baseurl=http://localhost/"
+              - docker ps -a
+              - sh run_ldp_testsuite.sh
+              - aws s3 cp --include "*.html" --recursive ./report s3://$AWS_BUCKET/ldp/report
 

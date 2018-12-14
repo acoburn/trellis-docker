@@ -6,6 +6,7 @@ services:
       TRELLIS_DB_USERNAME: trellis
       TRELLIS_DB_PASSWORD: trellis
       TRELLIS_DB_URL: jdbc:postgresql://db/trellis
+      JAVA_OPTS: "-Dtrellis.http.weak.etag=false -Dtrellis.http.memento.headerdates=false"
     ports:
       - 80:8080
     depends_on:
