@@ -6,12 +6,12 @@ services:
 
 jobs:
     include:
-        - name: "Trellis"
+        - name: "Trellis - Triplestore"
           before_install:
               - docker-compose --version
               - docker-compose -f trellis-compose.yml up -d
 
-        - name: "Trellis-ext-db"
+        - name: "Trellis - PostgreSQL"
           before_install:
               - docker-compose --version
               - docker-compose -f trellis-ext-db-compose.yml up -d
