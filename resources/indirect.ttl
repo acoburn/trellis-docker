@@ -3,7 +3,7 @@ PREFIX ldp: <http://www.w3.org/ns/ldp#>
 PREFIX dc: <http://purl.org/dc/terms/>
 
 <> a ldp:IndirectContainer ;
-   dcterms:title "Indirect Container" ;
+   dc:title "Indirect Container" ;
    ldp:membershipResource </member_ic> ;
    ldp:hasMemberRelation ldp:member ;
    ldp:insertedContentRelation foaf:primaryTopic .
