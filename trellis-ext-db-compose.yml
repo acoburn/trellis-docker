@@ -1,9 +1,5 @@
 version: "3"
 services:
-  trellis:
-    image: trellisldp/trellis:latest
-    ports:
-      - 8080:8080
   trellis-db:
     image: trellisldp/trellis-ext-db:latest
     environment:

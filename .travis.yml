@@ -4,12 +4,20 @@ python: 3.6
 services:
     - docker
 
-before_install:
-    - docker-compose --version
-    - docker-compose up -d
-    - docker ps -a
+jobs:
+    include:
+        - name: "Trellis"
+          before_install:
+              - docker-compose --version
+              - docker-compose -f trellis-compose.yml up -d
+
+        - name: "Trellis-ext-db"
+          before_install:
+              - docker-compose --version
+              - docker-compose -f trellis-ext-db-compose.yml up -d
 
 script:
-    - python verify_running.py
-    - python setup.py test -a "--baseurl=http://localhost:8080/"
-    - python setup.py test -a "--baseurl=http://localhost/"
+  - docker ps -a
+  - python verify_running.py --baseurl http://localhost/
+  - python setup.py test -a "--baseurl=http://localhost/"
+
