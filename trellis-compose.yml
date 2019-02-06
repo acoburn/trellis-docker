@@ -1,7 +1,7 @@
 version: "3"
 services:
   trellis:
-    image: trellisldp/trellis:latest
+    image: trellisldp/trellis:develop
     ports:
       - 80:8080
 
