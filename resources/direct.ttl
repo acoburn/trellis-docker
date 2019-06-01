@@ -3,5 +3,5 @@ PREFIX dc: <http://purl.org/dc/terms/>
 
 <> a ldp:DirectContainer ;
    dc:title "Direct Container" ;
-   ldp:membershipResource </member_dc> ;
+   ldp:membershipResource <#member_dc> ;
    ldp:hasMemberRelation ldp:member .
