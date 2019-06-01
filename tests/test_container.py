@@ -49,7 +49,7 @@ def test_post_rdf(baseurl):
     assert 200 == r.status_code
     assert "application/ld+json" == r.headers['content-type']
     d = r.json()
-    assert "http://example.com/TestResource" == d['@type']
+    assert "http://example.com/TestResource" == d['@type'] or "http://example.com/TestResource" in d['@type']
 
     r = requests.get(baseurl, headers={"accept":"application/ld+json"})
     d = r.json()
