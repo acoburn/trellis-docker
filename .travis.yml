@@ -20,4 +20,6 @@ jobs:
               - docker ps -a
               - sh run_ldp_testsuite.sh
               - aws s3 cp --include "*.html" --recursive ./report s3://$AWS_BUCKET/ldp/report
+              - aws s3 cp --include "*.ttl" --recursive ./report s3://$AWS_BUCKET/ldp/report
+              - aws s3 cp --include "*.jsonld" --recursive ./report s3://$AWS_BUCKET/ldp/report
 
