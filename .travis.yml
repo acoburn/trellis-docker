@@ -19,5 +19,6 @@ jobs:
               - python setup.py test -a "--baseurl=http://localhost/"
               - docker ps -a
               - sh run_ldp_testsuite.sh
-              - aws s3 cp --recursive ./report s3://$AWS_BUCKET/ldp/report
+              - aws s3 cp --recursive --exclude "*" --include "*.html" --include "*.ttl" ./report s3://$AWS_BUCKET/ldp/report
+              - aws s3 cp --recursive --content-type "application/ld+json" --exclude "*" --include "*.json" ./report s3://$AWS_BUCKET/ldp/report
 
