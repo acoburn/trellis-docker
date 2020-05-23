@@ -1,0 +1,13 @@
+version: "3"
+services:
+  trellis:
+    image: trellisldp/trellis-triplestore:develop
+    environment:
+      TRELLIS_HTTP_WEAK_ETAG: "false"
+      TRELLIS_HTTP_MEMENTO_HEADER_DATES: "false"
+      TRELLIS_HTTP_PRECONDITION_REQUIRED: "true"
+      TRELLIS_TRIPLESTORE_LDP_TYPE: "true"
+      TRELLIS_TRIPLESTORE_RDF_LOCATION: /opt/trellis/data/rdf
+    ports:
+      - 80:8080
+
