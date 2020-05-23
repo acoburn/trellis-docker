@@ -13,7 +13,7 @@ jobs:
               - python setup.py test -a "--baseurl=http://localhost/"
 
         - name: "Trellis - PostgreSQL"
-          before_install: docker-compose -f trellis-ext-db-compose.yml up -d
+          before_install: docker-compose -f trellis-db-compose.yml up -d
           script:
               - python verify_running.py --baseurl http://localhost/
               - python setup.py test -a "--baseurl=http://localhost/"

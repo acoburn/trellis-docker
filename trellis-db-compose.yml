@@ -1,7 +1,7 @@
 version: "3"
 services:
   trellis-db:
-    image: trellisldp/trellis-ext-db:develop
+    image: trellisldp/trellis:develop
     environment:
       TRELLIS_DB_USERNAME: trellis
       TRELLIS_DB_PASSWORD: trellis
