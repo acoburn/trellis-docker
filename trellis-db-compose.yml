@@ -1,8 +1,9 @@
 version: "3"
 services:
   trellis-db:
-    image: trellisldp/trellis-ext-db:develop
+    image: trellisldp/trellis:develop
     environment:
+      TRELLIS_DB_DRIVER: org.postgresql.Driver
       TRELLIS_DB_USERNAME: trellis
       TRELLIS_DB_PASSWORD: trellis
       TRELLIS_DB_URL: jdbc:postgresql://db/trellis
