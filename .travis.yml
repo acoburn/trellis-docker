@@ -10,24 +10,38 @@ branches:
 
 jobs:
     include:
-        - name: "Trellis - Triplestore"
+        - name: "Trellis - Triplestore (quarkus)"
+          before_install: docker-compose -f trellis-quarkus-triplestore-compose.yml up -d
+          script:
+              - python verify_running.py --baseurl http://localhost/
+              - python setup.py test -a "--baseurl=http://localhost/"
+              - sh run_ldp_testsuite.sh
+
+        - name: "Trellis - PostgreSQL (quarkus)"
+          before_install: docker-compose -f trellis-quarkus-postgresql-compose.yml up -d
+          script:
+              - python verify_running.py --baseurl http://localhost/
+              - python setup.py test -a "--baseurl=http://localhost/"
+              - sh run_ldp_testsuite.sh
+
+        - name: "Trellis - Triplestore (dropwizard)"
           before_install: docker-compose -f trellis-compose.yml up -d
           script:
               - python verify_running.py --baseurl http://localhost/
               - python setup.py test -a "--baseurl=http://localhost/"
+              - sh run_ldp_testsuite.sh
 
-        - name: "Trellis - H2"
+        - name: "Trellis - H2 (dropwizard)"
           before_install: docker-compose -f trellis-h2-compose.yml up -d
           script:
               - python verify_running.py --baseurl http://localhost/
               - python setup.py test -a "--baseurl=http://localhost/"
 
-        - name: "Trellis - PostgreSQL"
-          before_install: docker-compose -f trellis-postgres-compose.yml up -d
+        - name: "Trellis - PostgreSQL (dropwizard)"
+          before_install: docker-compose -f trellis-postgresql-compose.yml up -d
           script:
               - python verify_running.py --baseurl http://localhost/
               - python setup.py test -a "--baseurl=http://localhost/"
-              - docker ps -a
               - sh run_ldp_testsuite.sh
               - aws s3 cp --recursive --exclude "*" --include "*.html" --include "*.ttl" ./report s3://$AWS_BUCKET/ldp/report
               - aws s3 cp --recursive --content-type "application/ld+json" --exclude "*" --include "*.jsonld" ./report s3://$AWS_BUCKET/ldp/report

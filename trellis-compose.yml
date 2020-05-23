@@ -4,7 +4,7 @@ services:
     image: trellisldp/trellis:develop
     environment:
       TRELLIS_RDF: /opt/trellis/data/rdf
-      JAVA_OPTS: "-Dtrellis.http.weak-etag=false -Dtrellis.http.memento-header-dates=false -Dtrellis.http.precondition-required=true -Dtrellis.db.ldp-type=true"
+      JAVA_OPTS: "-Dtrellis.http.weak-etag=false -Dtrellis.http.memento-header-dates=false -Dtrellis.http.precondition-required=true -Dtrellis.triplestore.ldp-type=true"
     ports:
       - 80:8080
 

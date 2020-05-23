@@ -7,7 +7,7 @@ def test_get_container(baseurl):
     r = requests.get(baseurl)
 
     assert 200 == r.status_code
-    assert "text/turtle" == r.headers['content-type']
+    assert "text/turtle" in r.headers['content-type']
     links = parse_header_links(r.headers['link'])
     types = [l['url'] for l in links if (l['rel'] == 'type')]
     assert "http://www.w3.org/ns/ldp#BasicContainer" in types
@@ -29,7 +29,7 @@ def test_post_binary(baseurl):
 
     r = requests.get(location)
     assert 200 == r.status_code
-    assert "text/plain" == r.headers['content-type']
+    assert "text/plain" in r.headers['content-type']
     assert data == r.text
 
     r = requests.get(baseurl, headers={"accept":"application/ld+json"})
