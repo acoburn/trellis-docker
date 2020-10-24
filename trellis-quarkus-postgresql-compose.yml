@@ -3,6 +3,7 @@ services:
   trellis-db:
     image: trellisldp/trellis-postgresql:develop
     environment:
+      MP_JWT_VERIFY_PUBLICKEY_LOCATION: "https://www.trellisldp.org/tests/jwks.json"
       QUARKUS_DATASOURCE_USERNAME: trellis
       QUARKUS_DATASOURCE_PASSWORD: trellis
       QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://db/trellis

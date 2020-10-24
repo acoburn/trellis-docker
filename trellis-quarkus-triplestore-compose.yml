@@ -3,6 +3,7 @@ services:
   trellis:
     image: trellisldp/trellis-triplestore:develop
     environment:
+      MP_JWT_VERIFY_PUBLICKEY_LOCATION: "https://www.trellisldp.org/tests/jwks.json"
       TRELLIS_HTTP_WEAK_ETAG: "false"
       TRELLIS_HTTP_MEMENTO_HEADER_DATES: "false"
       TRELLIS_HTTP_PRECONDITION_REQUIRED: "true"
