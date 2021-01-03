@@ -124,13 +124,3 @@ jobs:
           python setup.py test -a "--baseurl=http://localhost/"
           sh run_ldp_testsuite.sh
 
-      - name: Publish reports
-        run: |
-          aws s3 cp --recursive --exclude "*" --include "*.html" --include "*.ttl" ./report s3://$AWS_BUCKET/ldp/report-dw-ts
-          aws s3 cp --recursive --content-type "application/ld+json" --exclude "*" --include "*.jsonld" ./report s3://$AWS_BUCKET/ldp/report-dw-ts
-        env:
-            AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-            AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-
