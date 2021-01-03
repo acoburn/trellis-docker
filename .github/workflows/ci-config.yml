@@ -1,0 +1,126 @@
+name: GitHub CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  triplestore:
+    name: Quarkus Triplestore
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: LDP tests
+        run: |
+          docker-compose -f trellis-quarkus-triplestore-compose.yml up -d
+          python verify_running.py --baseurl http://localhost/
+          python setup.py test -a "--baseurl=http://localhost/"
+          sh run_ldp_testsuite.sh
+
+  postgresql:
+    name: Quarkus PostgreSQL
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: LDP tests
+        run: |
+          docker-compose -f trellis-quarkus-postgresql-compose.yml up -d
+          python verify_running.py --baseurl http://localhost/
+          python setup.py test -a "--baseurl=http://localhost/"
+          sh run_ldp_testsuite.sh
+
+  legacy-postgresql:
+    name: Legacy (Dropwizard) PostgreSQL
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: LDP tests
+        run: |
+          docker-compose -f trellis-postgresql-compose.yml up -d
+          python verify_running.py --baseurl http://localhost/
+          python setup.py test -a "--baseurl=http://localhost/"
+          sh run_ldp_testsuite.sh
+
+  legacy-h2:
+    name: Legacy (Dropwizard) H2
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: LDP tests
+        run: |
+          docker-compose -f trellis-h2-compose.yml up -d
+          python verify_running.py --baseurl http://localhost/
+          python setup.py test -a "--baseurl=http://localhost/"
+          sh run_ldp_testsuite.sh
+
+  legacy-triplestore:
+    name: Legacy (Dropwizard) Triplestore
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: LDP tests
+        run: |
+          docker-compose -f trellis-compose.yml up -d
+          python verify_running.py --baseurl http://localhost/
+          python setup.py test -a "--baseurl=http://localhost/"
+          sh run_ldp_testsuite.sh
+
