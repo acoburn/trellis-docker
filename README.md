@@ -1,6 +1,6 @@
 # trellis-docker-tests
 
-[![Build Status](https://travis-ci.com/trellis-ldp/trellis-docker-tests.svg?branch=master)](https://travis-ci.com/trellis-ldp/trellis-docker-tests)
+![Build Status](https://github.com/trellis-ldp/trellis-docker-tests/workflows/GitHub%20CI/badge.svg)
 
 This repository conducts sanity tests of the following docker containers:
 
