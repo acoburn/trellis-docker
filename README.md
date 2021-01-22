@@ -4,7 +4,6 @@
 
 This repository conducts sanity tests of the following docker containers:
 
-  * [trellis](https://hub.docker.com/r/trellisldp/trellis/)
   * [trellis-triplestore](https://hub.docker.com/r/trellisldp/trellis-triplestore/)
   * [trellis-postgresql](https://hub.docker.com/r/trellisldp/trellis-posgresql/)
 
