@@ -9,6 +9,8 @@ services:
       TRELLIS_HTTP_PRECONDITION_REQUIRED: "true"
       TRELLIS_TRIPLESTORE_LDP_TYPE: "true"
       TRELLIS_TRIPLESTORE_RDF_LOCATION: /opt/trellis/data/rdf
+      TRELLIS_FILE_BINARY_PATH: /opt/trellis/data/binary
+      TRELLIS_FILE_MEMENTO_PATH: /opt/trellis/data/memento
     ports:
       - 80:8080
 
